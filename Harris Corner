@@ -1,0 +1,21 @@
+import cv2
+import numpy as np
+
+path = "C:/Users/91638/Downloads/parrot.jpeg"
+img = cv2.imread(path)
+
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+block_size = 2 
+ksize = 3       
+k = 0.04        
+corners = cv2.cornerHarris(img_gray, blockSize=block_size, ksize=ksize, k=k)
+
+
+threshold = 0.01 * corners.max()
+img_with_corners = img.copy()
+img_with_corners[corners > threshold] = [0, 0, 255] 
+cv2.imshow("Corners Detected", img_with_corners)
+
+cv2.waitKey(0)
+
