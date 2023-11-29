@@ -1,0 +1,8 @@
+import cv2
+path="C:/Users/91638/Downloads/parrot.jpeg"
+img=cv2.imread(path)
+a=int(input("a:"))
+b=int (input("b:"))
+img=cv2.resize(img,(a,b))
+cv2.imshow("Image",img)
+cv2.waitKey(0)
