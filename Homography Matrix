@@ -1,0 +1,21 @@
+import cv2
+import numpy as np
+
+
+image = cv2.imread(r"C:\Users\91638\Downloads\Dog.jpeg")
+img2 = cv2.imread(r"C:\Users\91638\Downloads\sushi.jpg")
+
+H = np.array([[0.8, 0.1, 50], [0.2, 1.2, 30], [0.001, 0.0001, 1]])
+
+h_img, w_img = image.shape[:2]
+
+
+transformed_img = cv2.warpPerspective(img2, H, (w_img, h_img))
+
+
+cv2.imshow('Original Image', image)
+cv2.imshow('Transformed Image', transformed_img)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
