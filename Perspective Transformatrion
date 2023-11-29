@@ -1,0 +1,16 @@
+import cv2
+import numpy as np
+
+img = cv2.imread("C:/Users/91638/Downloads/parrot.jpeg")
+source_points = np.float32([[50, 50], [200, 50], [50, 200], [200, 200]])
+
+destination_points = np.float32([[0, 0], [300, 0], [0, 300], [300, 300]])
+
+perspective_matrix = cv2.getPerspectiveTransform(source_points, destination_points)
+
+img_perspective = cv2.warpPerspective(img, perspective_matrix, (300, 300)) 
+
+cv2.imshow("Original Image", img)
+cv2.imshow("Perspective Transformed Image", img_perspective)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
