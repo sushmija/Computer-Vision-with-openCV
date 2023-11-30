@@ -1,0 +1,13 @@
+import cv2
+import numpy as np
+image = cv2.imread(r"C:\Users\91638\Downloads\parrot.jpeg")
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+sharpening_kernel = np.array([[-1, -1, -1],
+                              [-1,  9, -1],
+                              [-1, -1, -1]])
+sharpened = cv2.filter2D(gray, -1, sharpening_kernel)
+sharpened = np.clip(sharpened, 0, 255).astype(np.uint8)
+cv2.imshow('Original', image)
+cv2.imshow('Sharpened', sharpened)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
