@@ -1,0 +1,11 @@
+import cv2
+import numpy as np
+image = cv2.imread(r"C:\Users\91638\Downloads\parrot.jpeg")
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+unsharp_mask = cv2.addWeighted(gray, 1.5, blurred, -0.5, 0)
+unsharp_mask = np.clip(unsharp_mask, 0, 255).astype(np.uint8)
+cv2.imshow('Original', image)
+cv2.imshow('Unsharp Masking', unsharp_mask)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
